@@ -96,18 +96,6 @@ function endQuizGame() {
 // #                Hangman game logic                         #
 // #############################################################
 
-const HANGMAN_STAGES = [
-  "  +---+\n      |\n      |\n      |\n    ===",
-  "  +---+\n  O   |\n      |\n      |\n    ===",
-  "  +---+\n  O   |\n  |   |\n      |\n    ===",
-  "  +---+\n  O   |\n /|   |\n      |\n    ===",
-  "  +---+\n  O   |\n /|\\  |\n      |\n    ===",
-  "  +---+\n  O   |\n /|\\  |\n /    |\n    ===",
-  "  +---+\n  O   |\n /|\\  |\n / \\  |\n    ===",
-  "  +---+\n [O   |\n /|\\  |\n / \\  |\n    ===",
-  "  +---+\n [O]  |\n /|\\  |\n / \\  |\n    ===",
-];
-
 function createHangmanPage(gameRestartFunction) {
   gameContainer.innerHTML = "";
   const resetHangmanButton = document.createElement("button");
@@ -137,23 +125,16 @@ function createHangmanPage(gameRestartFunction) {
   startGuessButton.textContent = "Guess letter";
   startGuessButton.addEventListener("click", startHangmanTurn);
   guessContainer.appendChild(startGuessButton);
-
-  const hangmanContainer = document.createElement("div");
-  hangmanContainer.classList.add("hangman-draw-container")
-  hangmanContainer.innerHTML = `<pre>${HANGMAN_STAGES[amountOfWrongGuesses]}</pre>`
-  gameContainer.appendChild(hangmanContainer)
-
+  
   gameRestartFunction();
 }
 
 function updateHangmanUI() {
- const hangmanContainer = document.querySelector(".hangman-draw-container")
+  const guessContainer = document.querySelector(".guess-container");
   const remainingGuess = document.querySelector(".remaining-guesses");
   const wordToShow = document.querySelector(".word-to-show");
   remainingGuess.textContent = `You were wrong ${amountOfWrongGuesses} times`;
   wordToShow.textContent = updateWordToShowText();
-  hangmanContainer.innerHTML = `<pre>${HANGMAN_STAGES[amountOfWrongGuesses]}</pre>`
-
 }
 
 function updateWordToShowText() {
