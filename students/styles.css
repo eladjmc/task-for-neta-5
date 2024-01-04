@@ -77,52 +77,51 @@ h1 {
 }
 
 .game-container button:hover {
-    border: #333 solid 1px;
-    transform: scale(0.9);
-    color: #333;
-    background-color: #f0f0f0;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.315);
+  border: #333 solid 1px;
+  transform: scale(0.9);
+  color: #333;
+  background-color: #f0f0f0;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.315);
 }
-
 
 /* Styles for the quiz score container */
 .quiz-score-container {
-    margin: 20px auto;
-    padding: 20px;
-    max-width: 600px;
-    background-color: #f8f8f8;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  margin: 20px auto;
+  padding: 20px;
+  max-width: 600px;
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
 
 .quiz-score-container h2 {
-    color: #4CAF50; /* Green color for the score */
-    margin-bottom: 20px;
-    font-size: 1.5em;
+  color: #4caf50; /* Green color for the score */
+  margin-bottom: 20px;
+  font-size: 1.5em;
 }
 
 .quiz-score-container h3 {
-    color: #333;
-    margin-bottom: 10px;
-    font-size: 1.2em;
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 1.2em;
 }
 
 .quiz-score-container ul {
-    list-style-type: none; /* Remove default list styling */
-    padding: 0;
+  list-style-type: none; /* Remove default list styling */
+  padding: 0;
 }
 
 .quiz-score-container li {
-    background-color: #fff;
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    text-align: left;
+  background-color: #fff;
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  text-align: left;
 }
 
-.guess-container{
+.guess-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -133,19 +132,16 @@ h1 {
 
 .hangman-draw-container {
   font-size: 30px;
-  width: 186px;
-  height: 220px;
-    font-weight: bold;
-    box-shadow: 0 0 10px #0000003b;
-    padding: 20px 50px 20px 20px;
-    margin-top: 30px;
-    background-color: white;
-    position: relative;
-    overflow: hidden;
+  width: 200px;
+  height: 290px;
+  font-weight: bold;
+  box-shadow: 0 0 10px #0000003b;
+  padding: 20px 50px 20px 20px;
+  margin-top: 30px;
+  background-color: white;
+  position: relative;
+  overflow: hidden;
 }
-
-
-
 
 @keyframes hangmanAnimation {
   from {
@@ -153,19 +149,38 @@ h1 {
   }
   to {
     transform: scale(1);
-
   }
 }
-.hangman-draw-container pre{
+.hangman-draw-container pre {
   position: absolute;
   animation-name: hangmanAnimation;
   animation-duration: 0.8s;
 }
 
+.story-container {
+  max-width: 700px;
+  width: 100%;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  box-shadow: 0 0 10px #00000029;
+  padding: 30px;
+  background-color: beige;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.story-container h2 {
+  font-size: 36px;
+  text-decoration: underline;
+}
+
 /* Optional: Responsive styling */
 @media (max-width: 768px) {
-    .quiz-score-container {
-        width: 90%;
-        padding: 15px;
-    }
+  .quiz-score-container {
+    width: 90%;
+    padding: 15px;
+  }
 }

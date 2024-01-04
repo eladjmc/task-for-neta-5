@@ -157,6 +157,26 @@ h1 {
   animation-duration: 0.8s;
 }
 
+.story-container {
+  max-width: 700px;
+  width: 100%;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  box-shadow: 0 0 10px #00000029;
+  padding: 30px;
+  background-color: beige;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.story-container h2 {
+  font-size: 36px;
+  text-decoration: underline;
+}
+
 /* Optional: Responsive styling */
 @media (max-width: 768px) {
   .quiz-score-container {

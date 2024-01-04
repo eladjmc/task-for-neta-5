@@ -4,9 +4,9 @@
 
 // When you are developing a page switch the variable to true, 
 // if true a button for the page will show in the navbar
-const isQuizTaskDone = false;
-const isMediumTaskDone = false;
-const isHardTaskDone = false;
+const isStoryTaskDone = true;
+const isQuizTaskDone = true;
+const isHangmanTaskDone = true;
 
 
-updateNavbarButton([isQuizTaskDone, isMediumTaskDone, isHardTaskDone]);
+updateNavbarButton([isStoryTaskDone, isQuizTaskDone, isHangmanTaskDone]);

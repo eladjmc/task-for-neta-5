@@ -2,7 +2,7 @@ const navbar = document.querySelector("nav");
 const mainContent = document.querySelector("main");
 const gameContainer = document.querySelector(".game-container");
 let gameTitle = document.querySelector("h1");
-const TASKS_TITLES = ["Quiz Game", "Hangman Game", "Game 3"];
+const TASKS_TITLES = ["Story Game", "Quiz Game", "Hangman Game"];
 
 // #############################################################
 // #                Starting navbar logic                      #
@@ -34,7 +34,7 @@ const renderPage = (taskNumber) => {
   resetPage();
   switch (taskNumber) {
     case 0:
-      createStoryPage(resetStory);
+      createStoryPage(startQuestions);
       break;
     case 1:
       createQuizPage(startQuizGame);
@@ -42,7 +42,6 @@ const renderPage = (taskNumber) => {
     case 2:
       createHangmanPage(restartHangmanGame);
       break;
-
     default:
       break;
   }
@@ -52,22 +51,35 @@ const resetPage = () => {
   gameContainer.innerHTML = "";
 };
 
-
-
 // #############################################################
 // #                  Story game logic                         #
 // #############################################################
 function createStoryPage(gameLogicFunction) {
   const startQuestionsButton = document.createElement("button");
-  startQuestionsButton.textContent = "Start Story";
+  startQuestionsButton.textContent = "Start New Story";
   startQuestionsButton.addEventListener("click", gameLogicFunction);
   gameContainer.appendChild(startQuestionsButton);
 }
 
+function updateStoryUI() {
+  let storyContainer = document.querySelector(".story-container")
+  if(storyContainer){
+    storyContainer.remove();
+  }
+  storyContainer = document.createElement("div");
+  storyContainer.classList.add("story-container");
+  gameContainer.appendChild(storyContainer);
 
+  const storyTitle = document.createElement("h2");
+  storyTitle.classList.add("story-title");
+  storyTitle.textContent = "The Story";
+  storyContainer.appendChild(storyTitle);
 
-
-
+  const storyContent = document.createElement("p");
+  storyContent.classList.add("story-content");
+  storyContent.textContent = fullStory;
+  storyContainer.appendChild(storyContent)
+}
 // #############################################################
 // #                  quiz game logic                          #
 // #############################################################
@@ -134,7 +146,7 @@ function createHangmanPage(gameRestartFunction) {
   resetHangmanButton.textContent = "Guess another word";
   resetHangmanButton.addEventListener("click", restartHangmanGame);
   gameContainer.appendChild(resetHangmanButton);
-  
+
   const guessContainer = document.createElement("div");
   guessContainer.classList.add("guess-container");
   gameContainer.appendChild(guessContainer);
@@ -142,36 +154,35 @@ function createHangmanPage(gameRestartFunction) {
   const remainingGuess = document.createElement("h3");
   remainingGuess.classList.add("remaining-guesses");
   guessContainer.appendChild(remainingGuess);
-  
+
   const wordTitle = document.createElement("h2");
   wordTitle.classList.add("word-title");
   wordTitle.textContent = "Your Word:";
   guessContainer.appendChild(wordTitle);
-  
+
   const wordToShow = document.createElement("h1");
   wordToShow.classList.add("word-to-show");
   guessContainer.appendChild(wordToShow);
-  
+
   const startGuessButton = document.createElement("button");
   startGuessButton.textContent = "Guess letter";
   startGuessButton.addEventListener("click", startHangmanTurn);
   guessContainer.appendChild(startGuessButton);
 
   const hangmanContainer = document.createElement("div");
-  hangmanContainer.classList.add("hangman-draw-container")
-  gameContainer.appendChild(hangmanContainer)
+  hangmanContainer.classList.add("hangman-draw-container");
+  gameContainer.appendChild(hangmanContainer);
 
   gameRestartFunction();
 }
 
 function updateHangmanUI() {
- const hangmanContainer = document.querySelector(".hangman-draw-container")
+  const hangmanContainer = document.querySelector(".hangman-draw-container");
   const remainingGuess = document.querySelector(".remaining-guesses");
   const wordToShow = document.querySelector(".word-to-show");
   remainingGuess.textContent = `You were wrong ${amountOfWrongGuesses} times`;
   wordToShow.textContent = updateWordToShowText();
-  hangmanContainer.innerHTML = `<pre>${HANGMAN_STAGES[amountOfWrongGuesses]}</pre>`
-
+  hangmanContainer.innerHTML = `<pre>${HANGMAN_STAGES[amountOfWrongGuesses]}</pre>`;
 }
 
 function updateWordToShowText() {
