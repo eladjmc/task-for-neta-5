@@ -79,4 +79,3 @@ function checkWin() {
   }
 }
 
-// Initialize the game

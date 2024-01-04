@@ -144,6 +144,9 @@ h1 {
     overflow: hidden;
 }
 
+
+
+
 @keyframes hangmanAnimation {
   from {
     transform: scale(4);

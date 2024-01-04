@@ -46,7 +46,7 @@ function getRandomWord() {
 
 // Function to prompt the user for a letter and handle the guess
 function getUserGuess() {
-    // Step 1: Prompt the user to enter a letter
+    // Step 1: Prompt the user to enter a letter and convert it to lowercase using the method .toLowerCase()
 
     // Step 2: Validate the user's input (single letter, not previously guessed)
 

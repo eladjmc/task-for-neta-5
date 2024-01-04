@@ -34,9 +34,12 @@ const renderPage = (taskNumber) => {
   resetPage();
   switch (taskNumber) {
     case 0:
-      createQuizPage(startQuizGame);
+      createStoryPage(resetStory);
       break;
     case 1:
+      createQuizPage(startQuizGame);
+      break;
+    case 2:
       createHangmanPage(restartHangmanGame);
       break;
 
@@ -48,6 +51,22 @@ const renderPage = (taskNumber) => {
 const resetPage = () => {
   gameContainer.innerHTML = "";
 };
+
+
+
+// #############################################################
+// #                  Story game logic                         #
+// #############################################################
+function createStoryPage(gameLogicFunction) {
+  const startQuestionsButton = document.createElement("button");
+  startQuestionsButton.textContent = "Start Story";
+  startQuestionsButton.addEventListener("click", gameLogicFunction);
+  gameContainer.appendChild(startQuestionsButton);
+}
+
+
+
+
 
 // #############################################################
 // #                  quiz game logic                          #
@@ -97,15 +116,15 @@ function endQuizGame() {
 // #############################################################
 
 const HANGMAN_STAGES = [
-  "  +---+\n      |\n      |\n      |\n    ===",
-  "  +---+\n  O   |\n      |\n      |\n    ===",
-  "  +---+\n  O   |\n  |   |\n      |\n    ===",
-  "  +---+\n  O   |\n /|   |\n      |\n    ===",
-  "  +---+\n  O   |\n /|\\  |\n      |\n    ===",
-  "  +---+\n  O   |\n /|\\  |\n /    |\n    ===",
-  "  +---+\n  O   |\n /|\\  |\n / \\  |\n    ===",
-  "  +---+\n [O   |\n /|\\  |\n / \\  |\n    ===",
-  "  +---+\n [O]  |\n /|\\  |\n / \\  |\n    ===",
+  "  +----+\n  |    |\n       |\n       |\n       |\n       |\n=========",
+  "  +----+\n  |    |\n  O    |\n       |\n       |\n       |\n=========",
+  "  +----+\n  |    |\n  O    |\n  |    |\n       |\n       |\n=========",
+  "  +----+\n  |    |\n  O    |\n /|    |\n       |\n       |\n=========",
+  "  +----+\n  |    |\n  O    |\n /|\\   |\n       |\n       |\n=========",
+  "  +----+\n  |    |\n  O    |\n /|\\   |\n /     |\n       |\n=========",
+  "  +----+\n  |    |\n  O    |\n /|\\   |\n / \\   |\n       |\n=========",
+  "  +----+\n  |    |\n [O    |\n /|\\   |\n / \\   |\n       |\n=========",
+  "  +----+\n  |    |\n [O]   |\n /|\\   |\n / \\   |\n       |\n=========",
 ];
 
 function createHangmanPage(gameRestartFunction) {
@@ -140,7 +159,6 @@ function createHangmanPage(gameRestartFunction) {
 
   const hangmanContainer = document.createElement("div");
   hangmanContainer.classList.add("hangman-draw-container")
-  hangmanContainer.innerHTML = `<pre>${HANGMAN_STAGES[amountOfWrongGuesses]}</pre>`
   gameContainer.appendChild(hangmanContainer)
 
   gameRestartFunction();
