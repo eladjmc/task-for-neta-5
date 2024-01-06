@@ -16,6 +16,20 @@ function restartHangmanGame() {
   amountOfWrongGuesses = 0;
   updateHangmanUI();
 }
+
+// Select a random word
+function getRandomWord() {
+  const randomIndex = Math.floor(Math.random() * wordsArray.length);
+  return wordsArray[randomIndex];
+}
+
+// Reset word to display
+function resetWordToDisplay(selectedWord) {
+  for (let i = 0; i < selectedWord.length; i++) {
+    displayedWord.push("_");
+  }
+}
+
 // This function is invoked after the "Guess letter" button is clicked
 function startHangmanTurn() {
   if (displayedWord.includes("_") && amountOfWrongGuesses < 8) {
@@ -25,11 +39,17 @@ function startHangmanTurn() {
   checkWin();
 }
 
-// Select a random word
-function getRandomWord() {
-  const randomIndex = Math.floor(Math.random() * wordsArray.length);
-  return wordsArray[randomIndex];
+// Check if the game is won
+function checkWin() {
+  if (!displayedWord.includes("_")) {
+    alert("You win! you guessed the word");
+  } else if (amountOfWrongGuesses >= 8) {
+    alert("The man was hanged, no more turns");
+  }
 }
+
+
+
 // User guess letter prompt and validation
 function getUserGuess() {
   let guessedLetter = "";
@@ -63,19 +83,5 @@ function handleCorrectGuess(guessedLetter) {
   }
 }
 
-// Reset word to display
-function resetWordToDisplay(selectedWord) {
-  for (let i = 0; i < selectedWord.length; i++) {
-    displayedWord.push("_");
-  }
-}
 
-// Check if the game is won
-function checkWin() {
-  if (!displayedWord.includes("_")) {
-    alert("You win! you guessed the word");
-  } else if (amountOfWrongGuesses >= 8) {
-    alert("The man was hanged, no more turns");
-  }
-}
 
