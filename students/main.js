@@ -8,5 +8,4 @@ const isStoryTaskDone = true;
 const isQuizTaskDone = true;
 const isHangmanTaskDone = true;
 
-
 updateNavbarButton([isStoryTaskDone, isQuizTaskDone, isHangmanTaskDone]);
